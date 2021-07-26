@@ -1,13 +1,16 @@
-Etapa 1 - Instale o Java 8 no Ubuntu
-O OpenJDK 8 está disponível nos repositórios padrão do Apt. Você pode simplesmente instalar o Java 8 em um sistema Ubuntu usando os seguintes comandos.
 
-Execute os comandos abaixo para instalar o Java 8 no Ubuntu e LinuxMint.
+https://github.com/kzeoliveira/rasp.scada
+
+Step 1 - Install Java 8 on Ubuntu
+OpenJDK 8 is available in standard Apt repositories. You can simply install Java 8 on an Ubuntu system using the following commands.
+
+Run the commands below to install Java 8 on Ubuntu and LinuxMint.
 
       $sudo apt update
       $sudo apt install openjdk-8-jdk openjdk-8-jre
 
-Etapa 2 - Verifique a instalação do Java
-Após a instalação bem-sucedida do Oracle Java 8 usando as etapas acima, vamos verificar a versão instalada usando o seguinte comando.
+Step 2 - Check java installation
+After successful installation of Oracle Java 8 using the steps above, we will check the installed version using the following command.
 
       $java -version
 
@@ -17,71 +20,70 @@ Após a instalação bem-sucedida do Oracle Java 8 usando as etapas acima, vamos
 
 Step 3 – Setup JAVA_HOME and JRE_HOME Variable
 
-Etapa 3 - Configurar a variável JAVA_HOME e JRE_HOME
-Após instalar o Java no sistema Linux, é necessário configurar as variáveis ​​de ambiente JAVA_HOME e JRE_HOME , que são usadas por muitos aplicativos Java para localizar bibliotecas Java durante o tempo de execução. Você pode definir essas variáveis ​​no arquivo / etc / environment usando o seguinte comando.
+Step 3 - Set up the JAVA_HOME and JRE_HOME
+After installing Java on the Linux system, you must configure the environment variables JAVA_HOME and JRE_HOME, which are used by many Java applications to find Java libraries during runtime. You can set these variables in the file/etc/environment using the following command.
 
 $cat >> /etc/environment <<EOL
 JAVA_HOME= /usr/lib/jvm/java-8-openjdk-amd64
 JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 EOL
 
-Tudo pronto, você instalou o Java 8 com sucesso em um sistema Linux. Também pode ser necessário instalar o servidor Tomcat para executar seu aplicativo da web Java. Use nosso outro tutorial para instalar o Tomcat 7 ou instalar o Tomcat 8 ou instalar o Tomcat 9 nos sistemas Ubuntu, Debian e LinuxMint.
+All set, you've successfully installed Java 8 on a Linux system. You may also need to install the Tomcat server to run your Java web application. Use our other tutorial to install Tomcat 7 or install Tomcat 8 or install Tomcat 9 on Ubuntu, Debian and LinuxMint systems.
 
-Instalando o Tomcat7 
+Installing Tomcat7 
 
-Apache Tomcaté um produto de servidor da web de código aberto do Apache Foundation como o servidor HTTP Apache. É usado para implementar aplicativos Java Servlet e JSP. Para implantar um aplicativo no Tomcat, podemos simplesmente criar um arquivo de guerra e implantá-los. Para mais detalhes, visite o site oficial do apache http://tomcat.apache.org/ .
+Apache Tomcat is an Apache Foundation open source web server product such as the Apache HTTP server. It is used to implement Java Servlet and JSP applications. To deploy an application to Tomcat, we can simply create a war file and deploy it. For more details, visit the official apache website http://tomcat.apache.org/ .
 
-Este artigo o ajudará a instalar o tomcat 7 nos sistemas Ubuntu, Debian e LinuxMint.
+This article will help you install tomcat 7 on the Ubuntu, Debian, and LinuxMint systems.
 
+Step 1 - Check java
 
-Etapa 1 - Verifique o JAVA
-
-Primeiro, precisamos garantir que instalamos o java no sistema. JAVA é o primeiro requisito da instalação do tomcat. Use o comando a seguir para verificar se você já possui o java instalado no seu sistema. Tente manter o java atualizado com a versão mais recente.
+First, we need to make sure that we install java on the system. JAVA is the first requirement of installing tomcat. Use the following command to verify that you already have java installed on your system. Try to keep java up to date with the latest version.
 
      $java -version
      $java version "1.8.0_121"
      $Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
      $Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 
-Caso você não tenha o java instalado, use o link: Instale o JAVA 8 no Ubuntu
+If you don't have java installed, use the link: Install JAVA 8 on Ubuntu
 
-Etapa 2 - Baixar o arquivo do Tomcat 7
+Step 2 - Download the Tomcat 7 file
 
-Depois de configurar o JAVA corretamente no seu sistema, baixe o arquivo apache tomcat do site oficial do Apache usando http://tomcat.apache.org/download-70.cgi ou use o seguinte comando para baixar o Tomcat 7.0.68 no servidor Apache.
+After you configure JAVA correctly on your system, download the apache tomcat file from the official Apache website using http://tomcat.apache.org/download-70.cgi or use the following command to download Tomcat 7.0.68 to the Apache server.
 
      $cd /opt
      $wget http://mirror.nbtelecom.com.br/apache/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96.tar.gz
      
      
 
-Após competir, extraia o arquivo compactado no diretório / opt. Você pode alterar este local conforme sua configuração.
+After completing download, extract the compressed file into the directory /opt. You can change this location according to your configuration.
 
      $sudo tar xzf apache-tomcat-7.0.96.tar.gz
      $sudo mv apache-tomcat-7.0.96.tar.gz tomcat7
      
 
-Etapa 3 - Configuração da variável de ambiente
+Step 3 - Environment Variable Configuration
 
-Antes de iniciar o Tomcat, configure as variáveis ​​de ambiente adicionando uma entrada no arquivo ~ / .bashrc, para que o ambiente do sistema possa ser configurado na inicialização do sistema com o seguinte comando.
+Before you start Tomcat, configure the environment variables by adding an entry in the ~/.bashrc file, so that the system environment can be configured at system startup with the following command.
 
      $echo "export CATALINA_HOME="/opt/tomcat7"" >> ~/.bashrc
      $source ~/.bashrc
 
-Etapa 4 - Inicie o Tomcat
+Step 4 - Start Tomcat
 
-Depois de concluir toda a configuração acima, vamos usar o comando abaixo para iniciar o Tomcat. Não há necessidade de compilar sua fonte. Por padrão, o Tomcat inicia na porta 8080, portanto, verifique se nenhum outro aplicativo está usando a mesma porta.
+After completing the entire configuration above, we will use the command below to start Tomcat. There is no need to compile your source. By default, Tomcat starts on port 8080, so make sure no other applicationis using the same port.
 
      $cd /opt/tomcat7
      $sudo ./bin/startup.sh
 
-Etapa 5 - Acesse o Tomcat
-O servidor Tomcat funciona na porta 8080 padrão. Acesse o tomcat em um navegador da web conectando seu servidor na porta 8080.
+Step 5 - Access Tomcat
+The Tomcat server works on the default 8080 port. Access tomcat in a web browser by connecting your server on port 8080.
 
  http: //svr1.tecadmin.net: 8080 
  
-Etapa 6 - Configurar contas de usuário
+Step 6 - Set up user accounts
 
-Finalmente, precisamos criar contas de usuário para proteger e acessar as páginas de administrador / gerente. Edite o arquivo conf / tomcat-users.xml no seu editor e cole dentro das tags <tomcat-users> </tomcat-users>.
+Finally, we need to create user accounts to protect and access the administrator/manager pages. Edit the conf/tomcat-users file.xml in your editor and paste inside the <tomcat-users> </tomcat-users>.
 
 # user manager can access only manager section.
 <role rolename="manager-gui" />
@@ -91,9 +93,10 @@ Finalmente, precisamos criar contas de usuário para proteger e acessar as pági
 <role rolename="admin-gui" />
 <user username="admin" password="_SECRET_PASSWORD_" roles="manager-gui,admin-gui" />
 
-Etapa 7 - Criar script de inicialização do Tomcat7
+Step 7 - Create Tomcat7 startup script
 
-Crie um arquivo init /etc/init.d/tomcat7 usando o seguinte conteúdo.
+Create an init /etc/init.d/tomcat7 file using the following content.
+
 
 #!/bin/bash
 
@@ -123,17 +126,20 @@ case $1 in
   *) echo "Run as $0 "; exit 1;;
 esac
 
-Agora execute os seguintes comandos para definir permissões e links simbólicos adequados para o script init.
+Now run the following commands to set appropriate symbolic permissions and links for the init script.
+
 
       $chmod 755 /etc/init.d/tomcat7
       $update-rc.d tomcat7 defaults
       
       
-      Instalar LibRXTX-java 
+      Install LibRXTX-java 
+
       $sudo apt-get install librxtx-java
       
       
-      Reinicie o dispositivo
+      Restart your device 
+
       
       
         
